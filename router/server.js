@@ -27,8 +27,6 @@ class Server {
   }
 
   get(url, cb) {
-    console.log(url)
-    console.log(cb)
     // 参数不匹配
     if (!url || !cb || typeof cb !== 'function') return;
     this.router.get(url, function (res, req, next) {

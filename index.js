@@ -4,18 +4,18 @@
  * @date 2020/3/20
  */
 
-// const express = require("express");
 import express from 'express';
 import morgan from 'morgan';
 import path from "path";
 import { router } from './router'
+import config from './config';
 
 var app = express();
 app.use(morgan('short'));
 
 app.use(router)
 
-app.listen(3000, () => {
+app.listen(config.port, config.host, () => {
   console.debug('mockjs server is running at \' http:127.0.0.1://3000 \' !')
 });
 
