@@ -1,4 +1,8 @@
 require('./menu')
 
+require('./chat/user')
 
-export { router } from './server'
+const { router } = require('./server')
+// export { router } from './server'
+
+module.exports.router = router;
