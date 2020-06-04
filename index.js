@@ -29,7 +29,7 @@ app.all('*', function (req, res, next) {
 
 const { router } = require('./router')
 app.use(router)
-
+app.use('/public', express.static('public'));
 app.listen(config.port, config.host, () => {
   console.debug(`mockjs server is running at \' http:127.0.0.1://${config.port} \' !`)
 });

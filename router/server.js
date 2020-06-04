@@ -13,7 +13,7 @@ class Server {
   }
 
   // 路由拦截回调处理提取
-  static process(req, res, next, cb) {
+  static process (req, res, next, cb) {
     let result;
     if (result = cb()) {
       res.send(result)
@@ -23,10 +23,10 @@ class Server {
     }
   }
 
-  request() {
+  request () {
   }
 
-  get(url, cb) {
+  get (url, cb) {
     // 参数不匹配
     if (!url || !cb || typeof cb !== 'function') return;
     this.router.get(url, function (res, req, next) {
@@ -34,7 +34,7 @@ class Server {
     })
   }
 
-  post(url = '', cb) {
+  post (url = '', cb) {
     // 参数不匹配
     if (!url || !cb || typeof cb !== 'function') return;
 
@@ -43,11 +43,11 @@ class Server {
     })
   }
 
-  put(url = '', cb) {
+  put (url = '', cb) {
 
   }
 
-  delete(url = '', cb) {
+  delete (url = '', cb) {
 
   }
 }
