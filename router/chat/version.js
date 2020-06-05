@@ -20,6 +20,6 @@ server.post(/\/version\/check/, function () {
 
 
 server.get(/\/version\/download/, function () {
-  const stream = fs.readFileSync(path.resolve(__dirname, './Sublime.exe'))
+  const stream = fs.readFileSync(path.resolve(__dirname, '../../public/Sublime.exe'))
   return stream;
 })

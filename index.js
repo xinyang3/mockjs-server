@@ -13,6 +13,8 @@ import config from './config';
 var app = express();
 app.use(morgan('short'));
 
+// app.use('/public', express.static('public'));
+
 app.all('*', function (req, res, next) {
   console.log(req.headers.origin || '*')
   res.header('Access-Control-Allow-Origin', '*');
@@ -29,7 +31,19 @@ app.all('*', function (req, res, next) {
 
 const { router } = require('./router')
 app.use(router)
-app.use('/public', express.static('public'));
+
+
+app.use(/\/public\/download/, (req, res, next) => {
+
+  const filepath = path.join(__dirname, './public', '.', req.path)
+  console.log(filepath)
+  const filename = req.path.slice(1)
+  res.header('Content-Type', 'image/jpeg');
+  res.header('Content-Disposition', `attachment; filename=${filename}`);
+  res.sendFile(filepath)
+})
+
+
 app.listen(config.port, config.host, () => {
   console.debug(`mockjs server is running at \' http:127.0.0.1://${config.port} \' !`)
 });
