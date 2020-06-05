@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mock": "nodemon index.js --exec babel-node --presets es2015,stage-2"
+    "mock": "nodemon index.js --exec babel-node --presets es2015,stage-2",
+    "mock:file": "nodemon index2.js --exec babel-node --presets es2015,stage-2"
   },
   "repository": {
     "type": "git",

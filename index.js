@@ -15,7 +15,7 @@ app.use(morgan('short'));
 
 // app.use('/public', express.static('public'));
 
-app.all('*', function (req, res, next) {
+app.all(/\/api/, function (req, res, next) {
   console.log(req.headers.origin || '*')
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization,Origin,Accept,X-Requested-With');
@@ -32,13 +32,13 @@ app.all('*', function (req, res, next) {
 const { router } = require('./router')
 app.use(router)
 
+// 文件服务器
+app.use(/\/public/, (req, res, next) => {
 
-app.use(/\/public\/download/, (req, res, next) => {
-
+  console.log(res.headers)
   const filepath = path.join(__dirname, './public', '.', req.path)
-  console.log(filepath)
   const filename = req.path.slice(1)
-  res.header('Content-Type', 'image/jpeg');
+  // res.header('Content-Type', 'image/jpeg');
   res.header('Content-Disposition', `attachment; filename=${filename}`);
   res.sendFile(filepath)
 })
