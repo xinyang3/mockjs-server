@@ -36,6 +36,11 @@ app.use(router)
 app.use(/\/public/, (req, res, next) => {
 
   console.log(res.headers)
+  
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization,Origin,Accept,X-Requested-With');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
   const filepath = path.join(__dirname, './public', '.', req.path)
   const filename = req.path.slice(1)
   // res.header('Content-Type', 'image/jpeg');
